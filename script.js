@@ -1,20 +1,19 @@
-function threeSumClosest(nums, target) {
-    nums.sort((a, b) => a - b);
-    let closestSum = Infinity;
-    for (let i = 0; i < nums.length - 2; i++) {
-        let left = i + 1;
-        let right = nums.length - 1;
-        while (left < right) {
-            const sum = nums[i] + nums[left] + nums[right];
-            if (sum === target) {
-                return target;
-            } else if (sum < target) {
-                left++;
-            } else {
-                right--;
-            }
-            closestSum = Math.abs(sum - target) < Math.abs(closestSum - target) ? sum : closestSum;
-        }
-    }
-    return closestSum;
+function threeSum(arr, target) {
+	  let closet = Number.MAX_SAFE_INTEGER;
+	let ans = 0;
+	for(let i = 0;i<arr.length -2 ; i++){
+		for(let j = i+1 ; j < arr.length - 1; j++){
+			for(let k = j+1; k< arr.length; k++){
+				ans = arr[i]+arr[j]+arr[k];
+				if(ans === target){
+					return ans
+				}else if(Math.abs(ans - target) < Math.abs(closet - target)){
+					closet = ans;
+				}
+			}
+		}
+	}
+	return closet
 }
+
+module.exports = threeSum;
